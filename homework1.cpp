@@ -15,6 +15,22 @@ using namespace std;
 
 #define PI 3.1415
 
+double EnterNum()
+{
+	bool valid = false;
+	double num;
+	while (!valid) {
+	valid = true; ///Stop if input is correct
+	cin >> num;
+	if (cin.fail()) {	///Stream is false
+		cin.clear();	///Correcting stream
+		cin.ignore();	///Skipping the left over stream data
+		cout << "\nPlease, enter number!!!\nCharacters and letters are not allowed\n\n";
+		valid = false; ///Going back to loop
+	}
+	}
+	return num;
+}
 void TotalCount(double x, double y, string method)	///This will do all calculations:
 {
 	double total;
@@ -49,7 +65,7 @@ void TotalCount(double x, double y, string method)	///This will do all calculati
 int main() {
 	double x, y, total;
 	string method;
-	int again;
+	string again;
 	
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome. Please,";
 	METHOD:
@@ -59,90 +75,76 @@ int main() {
 	if (method == "add" || method == "1" || method == "+")
 	{
 		cout << "Enter 2 numbers for addition:\n\n";
-		cin >> x >> y;
+		x = EnterNum();
+		y = EnterNum();
 		cout << "Addition result is ";
 
 		TotalCount(x, y, "+");
 
-		cout << "Do you want try again? (Enter 1 if yes)\n";
+		cout << "Do you want to try again? (Y/N)\n";
 		cin >> again;
-		switch (again)
-		{
-			case 1: goto METHOD; break;
-			default: return 0; break;
-		}
+		if (again == "Y" || again == "YES" || again == "Yes" || again == "yes" || again == "y") { goto METHOD; }
+		else { return 0; }
 	}
 			if (method == "subtract" || method == "2" || method == "-")
 	{
 		cout << "Enter 2 numbers for subtraction:\n\n";
-		cin >> x >> y;
+		x = EnterNum();
+		y = EnterNum();
 		cout << "Subtraction result is ";
 		TotalCount(x, y, "-");
-		cout << "Do you want try again? (Enter 1 if yes)\n";
+		cout << "Do you want to try again? (Y/N)\n";
 		cin >> again;
-		switch (again)
-		{
-			case 1: goto METHOD; break;
-			default: return 0; break;
-		}
+		if (again == "Y" || again == "YES" || again == "Yes" || again == "yes" || again == "y") { goto METHOD; }
+		else { return 0; }
 	}
 		if (method == "multiply" || method == "3" || method == "*")
 	{
 		cout << "Enter 2 numbers for multiplication:\n\n";
-		cin >> x >> y;
+		x = EnterNum();
+		y = EnterNum();
 		cout << "Multiplication result is ";
 		TotalCount(x, y, "*");
-		cout << "Do you want try again? (Enter 1 if yes)\n";
+		cout << "Do you want to try again? (Y/N)\n";
 		cin >> again;
-		switch (again)
-		{
-			case 1: goto METHOD; break;
-			default: return 0; break;
-		}
+		if (again == "Y" || again == "YES" || again == "Yes" || again == "yes" || again == "y") { goto METHOD; }
+		else { return 0; }
 	}
 		if (method == "divide" || method == "4" || method == "/")
 	{
 		cout << "Enter 2 numbers for division:\n\n";
-		cin >> x >> y;
+		x = EnterNum();
+		y = EnterNum();
 		cout << "Division result is ";
 		TotalCount(x, y, "/");
-		cout << "Do you want try again? (Enter 1 if yes)\n";
+		cout << "Do you want to try again? (Y/N)\n";
 		cin >> again;
-		switch (again)
-		{
-			case 1: goto METHOD; break;
-			default: return 0; break;
-		}
+		if (again == "Y" || again == "YES" || again == "Yes" || again == "yes" || again == "y") { goto METHOD; }
+		else { return 0; }
 	}
 		if (method == "log" || method == "5")
 	{
 		cout << "Enter number for logarithm:\n\n";
-		cin >> x;
+		x = EnterNum();
 		y = 1;
 		cout << "log(" << x << ") = ";
 		TotalCount(x, y, "log");
-		cout << "Do you want try again? (Enter 1 if yes)\n";
+		cout << "Do you want to try again? (Y/N)\n";
 		cin >> again;
-		switch (again)
-		{
-			case 1: goto METHOD; break;
-			default: return 0; break;
-		}
+		if (again == "Y" || again == "YES" || again == "Yes" || again == "yes" || again == "y") { goto METHOD; }
+		else { return 0; }
 	}
 	if (method == "circle-area" || method == "6")
 	{
 		cout << "Enter the radius of circle:\n\n";
-		cin >> x;
+		x = EnterNum();
 		y = 1;
 		cout << "Your circle's area is ";
 		TotalCount(x, y, "c-area");
-		cout << "Do you want try again? (Enter 1 if yes)\n";
+		cout << "Do you want to try again? (Y/N)\n";
 		cin >> again;
-		switch (again)
-		{
-			case 1: goto METHOD; break;
-			default: return 0; break;
-		}
+		if (again == "Y" || again == "YES" || again == "Yes" || again == "yes" || again == "y") { goto METHOD; }
+		else { return 0; }
 	}
 	return 0;
 }
