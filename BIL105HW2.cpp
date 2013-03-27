@@ -11,6 +11,10 @@
 
 using namespace std;
 
+void Calculate(int N, int M, double alc, int tries)
+{
+	cout << "OK";
+}
 int main()
 {
 	int N, M, tries;
@@ -49,7 +53,8 @@ int main()
 		if (tries > 0)
 		{ checker = true; }
 		else { cout << "\nPlease, enter natural number for tries:\t"; }
-	} checker = false;
+	}
+	Calculate(N, M, alc,tries);
 	
 	return 0;
 }
