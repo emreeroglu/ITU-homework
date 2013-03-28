@@ -13,8 +13,58 @@ using namespace std;
 
 void Calculate(int N, int M, double alc, int tries)
 {
-	cout << "OK";
+	double x, y, z;	///Counting Chance to know in which way we will move
+	int start,position,i, a;
+	int fall = 0;
+	int success = 0;
+	int center = (N+1) / 2;
+	int mcenter = -1 * center;
+	position = 0;	///Our Position - 0 is center
+	
+	for (i = 1; i <= tries; i++)
+	{
+		for(start = 1; start <= M; start++)
+		{
+			if (position == 0)		///We are in Center
+			{
+				x = 1 - 2 * alc / 3;	///straight step
+				y = alc / 3;			///Shifting side
+				if (x < y) {		///Move left or right
+					srand(time(NULL));
+					a = rand() % 2;
+					switch(a) {
+						case 0: position--; break;
+						case 1: position++; break;
+					}
+				}
+			} else {	///Not Center
+				x = (5 - 3 * alc) / 6;	///straight step
+				y = (1 + alc) / 6;		///Shifting to center
+				z = alc / 3;			///Shifting against of center
+				if (y > x && y > z)
+				{
+					if (position > 0) { position--; }
+					else if (position < 0) { position++; }
+				}
+				if (z > y && z > x)
+				{
+					if (position > 0) { position++; }
+					else if (position < 0) { position--; }
+				}
+			}
+			if ( position > center || position < mcenter)	///Fall
+			{
+				start = 1;	///Return back to start
+				i++;	/// 1 try loosed
+				fall++;	///Falling counter
+			}
+		}
+		success++;	///Success counter
+	}
+	cout << "\nTries: " << tries << "\nSuccess: " << success << "\nFalled: " << fall;
+	cout << "\nTries - Falled = Success: " << tries << " - " << fall << " = " << tries - fall <<endl;
 }
+
 int main()
 {
 	int N, M, tries;
