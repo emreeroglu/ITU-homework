@@ -42,7 +42,7 @@ bool passed(double p, int center, int M, int N)
 	return true;
 }
 
-void Calculate(int N, int M, double p, int tries)	///getting alc as p
+void CrossBridge(int N, int M, double p, int tries)	///getting alc as p
 {
 	int fall = 0;	///We falled
 	int i,e;
@@ -109,7 +109,7 @@ int main()
 		{ checker = true; }
 		else { cout << "\nPlease, enter natural number for tries:\t"; }
 	}
-	Calculate(N, M, alc,tries);
+	CrossBridge(N, M, alc,tries);
 	
 	return 0;
 }
