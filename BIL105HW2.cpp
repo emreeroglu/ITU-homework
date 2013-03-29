@@ -3,7 +3,6 @@
 * Crossing the Bridge                                                      *
 * Emin Mastizada | 150120914                                               *
 ***************************************************************************/
-/***			No Any Special Notes for now            				***/
 
 #include <iostream>
 #include <stdio.h>
@@ -11,58 +10,63 @@
 
 using namespace std;
 
-void Calculate(int N, int M, double alc, int tries)
+/** Global Variables: **/
+int x, y;
+double c_straight, s_straight, c_side, s_center;	///Moves
+
+bool passed(double p, int center, int M, int N)
 {
-	double x, y, z;	///Counting Chance to know in which way we will move
-	int start,position,i, a;
-	int fall = 0;
-	int success = 0;
-	int center = (N+1) / 2;
-	int mcenter = -1 * center;
-	position = 0;	///Our Position - 0 is center
-	
-	for (i = 1; i <= tries; i++)
+	if (y >= (M - 1))	///Passed
+		return true;
+    if (x >= N || x < 0)
+		return false;	///Falled
+	double a = ((double) rand() / (RAND_MAX));
+	/** Debug: cout << a << endl; **/
+	if (x == center)	///On Center
 	{
-		for(start = 1; start <= M; start++)
+		if (a <= c_side) {y++;}	///Straight Step
+		else if (a <= c_side) {x--; y++;}	///Left Turn
+		else {x++; y++;}	///Right Move
+	} else {	///On Side
+		if (a <= s_center)	///Move to Center
 		{
-			if (position == 0)		///We are in Center
-			{
-				x = 1 - 2 * alc / 3;	///straight step
-				y = alc / 3;			///Shifting side
-				if (x < y) {		///Move left or right
-					srand(time(NULL));
-					a = rand() % 2;
-					switch(a) {
-						case 0: position--; break;
-						case 1: position++; break;
-					}
-				}
-			} else {	///Not Center
-				x = (5 - 3 * alc) / 6;	///straight step
-				y = (1 + alc) / 6;		///Shifting to center
-				z = alc / 3;			///Shifting against of center
-				if (y > x && y > z)
-				{
-					if (position > 0) { position--; }
-					else if (position < 0) { position++; }
-				}
-				if (z > y && z > x)
-				{
-					if (position > 0) { position++; }
-					else if (position < 0) { position--; }
-				}
-			}
-			if ( position > center || position < mcenter)	///Fall
-			{
-				start = 1;	///Return back to start
-				i++;	/// 1 try loosed
-				fall++;	///Falling counter
-			}
+			if (x < center) {x++; y++;}
+			else {x--; y++;}
 		}
-		success++;	///Success counter
+		else if (a <= s_straight) {y++;}
+		else {
+			if (x < center) {x--; y++;}
+			else {x++; y++;}
+		}
 	}
-	cout << "\nTries: " << tries << "\nSuccess: " << success << "\nFalled: " << fall;
-	cout << "\nTries - Falled = Success: " << tries << " - " << fall << " = " << tries - fall <<endl;
+	return true;
+}
+
+void Calculate(int N, int M, double p, int tries)	///getting alc as p
+{
+	int fall = 0;	///We falled
+	int i,e;
+	const int center = (N - 1) / 2;		///Center Point
+	/** Move Probability **/
+	/** Center **/
+	c_straight = 1 - 2 * p / 3;
+	c_side = c_straight + p / 3;
+	/** Side **/
+	s_center = (5 - 3 * p) / 6;
+	s_straight = s_center + (1 + p) / 6;
+	
+	for (i=0; i < tries; i++)
+	{
+		x = center;	///Center
+		y = 0;		///Start Point
+		for (e=0; e < M; e++)
+		{
+			if (!passed(p, center, M, N))	///Not Passed - Falled
+			{ fall++; break; }
+		}
+	}
+	cout << tries - fall << " out of " << tries << " tries was successful at crossing the bridge\n";
+	cout << "Probability = " << (tries - fall) * 1.0 / tries << endl;	/// *1.0 is for converting from integer to double
 }
 
 int main()
@@ -70,6 +74,7 @@ int main()
 	int N, M, tries;
 	double alc;
 	bool checker;
+	srand(time(NULL));
 	
 	cout << "Enter bridge size (N and M):\t";
 	checker = false;
