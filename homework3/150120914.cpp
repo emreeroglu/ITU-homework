@@ -59,10 +59,10 @@ int main(int argc, char* argv[])
 					{
 						z = CostM[i-1][j-1];
 					}
-					else if( isVowel(l1) && isVowel(l2) )	/// 1st letter is vowel
+					else if( isVowel(l1) && isVowel(l2) )	/// Both letters are vowel
 					{
 						z = CostM[i-1][j-1] + subn;
-					} else if( !isVowel(l1) && !isVowel(l2) )	/// 1st is consonant
+					} else if( !isVowel(l1) && !isVowel(l2) )	/// Both letters are consonant
 					{
 						z = CostM[i-1][j-1] + subn;
 					} else {
