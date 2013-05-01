@@ -15,11 +15,13 @@ These homeworks are from BIL105E lesson.
 .pdf - homework details and raport
 .cpp - homework file
 </b>
-
 <b>
 Don't Copy!!!
 </b>
-These codes are already used in ITU so they will check your code. These codes are for algorithm example. So you can learn how program must work and try to create your own algorithm.
+These codes are already used in ITU so they will check your code.
+These codes are for algorithm example.
+So you can learn how program must work and try to create your own
+algorithm.
 
 <i>Developed using Greany, Linux Terminal (g++ and gdb), LibreOffice, Document Viewer, GEdit, Dia, Gimp
 Ubuntu 12.10</i>
