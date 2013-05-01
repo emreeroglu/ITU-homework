@@ -16,5 +16,6 @@ These homeworks are from BIL105E lesson.
 .cpp - homework file
 </b>
 
-<i>Developed using Greany, Linux Terminal (g++), Dia, LibreOffice, Ubuntu 12.10</i>
+<i>Developed using Greany, Linux Terminal (g++ and gdb), LibreOffice, Document Viewer, GEdit, Dia, Gimp
+Ubuntu 12.10</i>
 </pre>
