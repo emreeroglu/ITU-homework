@@ -26,3 +26,6 @@ algorithm.
 <i>Developed using Greany, Linux Terminal (g++ and gdb), LibreOffice, Document Viewer, GEdit, Dia, Gimp
 Ubuntu 12.10</i>
 </pre>
+
+
+[![Analytics](https://ga-beacon.appspot.com/UA-36541010-2/ITU-homeworks/README)](http://www.mastizada.com)
