@@ -5,7 +5,7 @@ HomeWorks
 
 Name: Emin Mastizada
 Student ID: 150120914
-e-mail: mastizada@itu.edu.tr
+E-mail: mastizada@itu.edu.tr
 
 These homeworks are from BIL105E lesson.
 1st class,irregular, 2013
